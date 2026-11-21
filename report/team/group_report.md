@@ -32,7 +32,7 @@ Con số chính (ghi nhãn `simulated` khi cần) và đề xuất cuối của 
 - Chỉ số trong đợt chạy thử: chính **82,83%**, bỏ qua gợi ý **27,12%**, mở lại 7 ngày **4,25%**.
 - Pilot: 20 + 20 nhân viên, MDE 6 điểm, 859 yêu cầu/nhóm; con số bất lợi là power **0,64** nếu tác động thật chỉ 5 điểm.
 - **Đề xuất: Go có điều kiện** cho pilot noi_dia + hang_nang, 4 điều kiện có người phụ trách và ngày kiểm tra.
-- Kết quả duyệt chéo nhóm nhận được từ hội đồng: ...
+- **Kết quả duyệt chéo nhóm nhận được từ hội đồng (nhóm 4AE):** **26 / 30 điểm** (Đề xuất khớp bằng chứng: 9/10 · Số giả lập và phạm vi: 8/10 · Pilot ra được quyết định: 9/10) — **Quyết định hội đồng: Go có điều kiện**. Hội đồng đánh giá cao đề xuất khớp bằng chứng, nêu đủ số bất lợi (xem lại 100% lên 0,98–1,03×, power 0,64) và 3 luật dừng rõ ngưỡng/người dừng; đồng thời góp ý 3 điểm cần làm rõ (chênh lệch baseline 0,70 vs 82,83%, ngày bắt đầu/thời lượng pilot, và CPS cộng cố định 40 triệu/tháng ở đúng quy mô pilot 20 nhân viên). Nhóm đã phản hồi đầy đủ tại buổi (dùng baseline từ nhóm đối chứng cùng kỳ, nền ~0,83 cần ít mẫu hơn nên 859 vẫn thận trọng; chạy 2 tuần 2026-12-22 → 2027-01-05; ở 5.980 yc pilot thì CPS + cố định là ~10.712 đ = 0,89× `simulated`, chạy đủ 1 tháng giảm còn ~6.647 đ = 0,55× `simulated`).
 
 ## 5. Khó khăn và cách xử lý
 

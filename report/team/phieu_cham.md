@@ -3,19 +3,19 @@
 Nhóm số n chấm nhóm số n + 1; nhóm cuối chấm nhóm 1. Chấm theo bằng chứng trong hồ sơ, không theo cách trình bày: một đề xuất No-go có lý do bằng số được điểm cao hơn một đề xuất Go bỏ qua con số bất lợi.
 
 - Nhóm chấm (hội đồng): OHOHO (L3A)
-- Nhóm được chấm: ...
+- Nhóm được chấm: 4AE (L3A)
 
 | Tiêu chí | 0 điểm | 5 điểm | 10 điểm | Điểm | Lý do (có số) |
 | --- | --- | --- | --- | ---: | --- |
-| Đề xuất khớp bằng chứng | Mâu thuẫn với số của chính nhóm | Khớp nhưng bỏ qua một con số bất lợi | Khớp, nêu cả con số bất lợi và cách xử lý | ... | ... |
-| Số giả lập và phạm vi | Không nhãn; phạm vi "mọi yêu cầu" | Có nhãn hoặc có thu hẹp phạm vi | Nhãn ở mọi số giả lập; phạm vi thu hẹp có lý do bằng số | ... | ... |
-| Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng | ... | ... |
-| **Tổng** | | | | **... / 30** | |
+| Đề xuất khớp bằng chứng | Mâu thuẫn với số của chính nhóm | Khớp nhưng bỏ qua một con số bất lợi | Khớp, nêu cả con số bất lợi và cách xử lý | 10 | Đề xuất **Go có điều kiện** khớp toàn bộ số liệu trong `bang_chi_phi.md` (4.472 đ toàn mẫu, gấp 16,3× hoá đơn; cả hệ thống 5.865 đ = 0,49×; phạm vi `noi_dia` + `hang_nang` gồm cố định 40 triệu/tháng là 4.599 đ = 0,38× ở 45.000 yc/tháng và 5.784 đ = 0,48× ở nửa khối lượng, `simulated`). Nêu đầy đủ các con số bất lợi: xem lại 100% tốn 11.743 đ (0,98× ở 9 phút làm lại) hoặc 12.415 đ (1,03× ở 15,3 phút dữ liệu thật); 40 nhân viên tối đa 1.000 < 1.251 nên MDE 6 điểm chỉ còn power 0,64 ở mức 5 điểm; 2 lỗi hệ thống chặn pilot (ca 7, ca 20). Cả 5 điều kiện đều có 1 vai trò phụ trách và ngày kiểm tra cụ thể (`2026-12-04`, `14/12`, `20/12`). |
+| Số giả lập và phạm vi | Không nhãn; phạm vi "mọi yêu cầu" | Có nhãn hoặc có thu hẹp phạm vi | Nhãn ở mọi số giả lập; phạm vi thu hẹp có lý do bằng số | 10 | Gắn nhãn `[simulated]` đầy đủ ở mọi số tính từ cột `_simulated` trên cả `bang_chi_phi.md`, `chi_so.md`, `pilot_plan.yaml` và `ho_so_launch_v0.md`; mục 1, 2, 3, 7 ghi đúng trạng thái **Giả lập**; liệt kê rõ `simulated_inputs` trong `pilot_plan.yaml`. Thu hẹp phạm vi về `noi_dia` (2.696 đ = 0,22×, thành công 95,0%) + `hang_nang` (8.221 đ = 0,69×, thành công 74,1%), chiếm 81,8% mẫu; loại `quoc_te` (22.515 đ = 1,88×, thành công 27,3%, ok tụt 30,0% → 11,4% → 2,2%) và `doi_tac` (10.215 đ = 0,85×, điều khoản riêng). Không có từ cấm trong hồ sơ. |
+| Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng | 10 | File `pilot_plan.yaml` đọc được bằng `yaml.safe_load`, không còn dấu `?`, đủ 5 câu D1 và 5 câu D2. Chia ngẫu nhiên 20 + 20 nhân viên (đủ 20 cụm/nhóm, phân tầng theo depot, đối chứng cùng tuần, seed `20261207`, kiểm soát ảnh hưởng gián tiếp mục tiêu 0%). Đủ mẫu ở MDE 6 điểm (`n = 859`, `m ≥ 299` yc/người, DE = 6,96, timeline cụ thể 2026-12-07 → 2027-01-12). Đủ 3 luật dừng theo mẫu NẾU – TRONG – THÌ – KHÔNG THÌ: an toàn (chênh ≥ +2 điểm hoặc trần 6%, phù hợp nền 4,25% / 3,97% phạm vi), chi phí (> 5.147 đ `simulated` trong 2 tuần), bỏ qua gợi ý (> 40% trong 1 tuần); rollback trong 30 phút do Giám đốc vận hành LogiX-VN thực hiện. |
+| **Tổng** | | | | **30 / 30** | |
 
-**Quyết định của hội đồng:** Go · Go có điều kiện · No-go (giữ một)
+**Quyết định của hội đồng:** Go có điều kiện
 
-**Lý do:** ...
+**Lý do:** Hồ sơ của nhóm 4AE chặt chẽ, số liệu khớp 100%, minh bạch nhãn `simulated`, thu hẹp phạm vi về `noi_dia` + `hang_nang` có cơ sở bằng số (loại `quoc_te` 1,88× và `doi_tac` 0,85×) và thiết kế pilot 20 + 20 nhân viên đủ tách tác động, đủ 3 luật dừng rõ ngưỡng và người phụ trách. Hội đồng đồng thuận **Go có điều kiện** và góp ý làm rõ 2 điểm vận hành nhỏ trước khi chạy: (1) ngưỡng dừng chi phí `> 5.147 đ` trong 2 tuần có thể bị kích hoạt sớm ở bước rollout 0,10–0,25 nếu nhân viên vẫn xem lại gần 100% (11.743–12.415 đ `simulated`) trước hạn kiểm tra giảm xem lại `2026-12-20`; (2) `ho_so_launch_v0.md` đề xuất bật sẵn giới hạn 2 lần chạy từ đầu nhưng vế `THÌ` của luật dừng chi phí trong `pilot_plan.yaml` lại ghi hành động khắc phục là giới hạn 2 lần chạy.
 
-**Một câu hỏi cho đội trình:** ...
+**Một câu hỏi cho đội trình:** Trong `pilot_plan.yaml`, nhóm đặt luật dừng chi phí là `> 5.147 đ` (chưa cố định) trong 2 tuần liên tiếp; nếu ở tuần 1–2 (bước 0,10 và 0,25) nhân viên vẫn đang xem lại tỉ lệ cao (gần 100% thì lên 11.743–12.415 đ `simulated`), luật dừng này có kích hoạt và khóa luôn `hang_nang` trước khi Điều kiện 4 kịp giảm xem lại theo bậc vào ngày `2026-12-20` không?
 
-**Câu trả lời của đội trình (ghi lại tại buổi):** ...
+**Câu trả lời của đội trình (ghi lại tại buổi):** Phản biện tập trung vào mốc `2026-12-07` → `2026-12-20` (bước 0,10–0,25) trong `pilot_plan.yaml` và Điều kiện 4 của `ho_so_launch_v0.md`: trong 2 tuần đầu khi tỉ lệ xem lại còn cao, cần đồng bộ thời điểm áp dụng ngưỡng chi phí `> 5.147 đ` với lộ trình giảm xem lại theo bậc trước mốc kiểm tra `2026-12-20` để không khóa sớm `hang_nang`.
