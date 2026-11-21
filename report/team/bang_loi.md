@@ -6,28 +6,28 @@
 
 Người gắn nhãn 1: Đoàn Gia Long · Người gắn nhãn 2: Minh (gắn trong 8 phút, không trao đổi)
 
-| Ca | Nhãn người 1 | Nhãn người 2 | Trùng? | Nhãn thống nhất |
-| --: | --- | --- | --- | --- |
-| 1 | Do người dùng | Do người dùng | Có | Do người dùng |
-| 2 | Hệ thống | Hệ thống | Có | Hệ thống |
-| 3 | Ngữ cảnh | Ngữ cảnh | Có | Ngữ cảnh |
-| 4 | Giới hạn hệ thống | Giới hạn hệ thống | Có | Giới hạn hệ thống |
-| 5 | Ngầm | Ngầm | Có | Ngầm |
-| 6 | Do người dùng | Do người dùng | Có | Do người dùng |
-| 7 | Hệ thống | Hệ thống | Có | Hệ thống |
-| 8 | Hệ thống | Hệ thống | Có | Hệ thống |
-| 9 | Do người dùng | Do người dùng | Có | Do người dùng |
-| 10 | Ngữ cảnh | Ngữ cảnh | Có | Ngữ cảnh |
-| 11 | Giới hạn hệ thống | Giới hạn hệ thống | Có | Giới hạn hệ thống |
-| 12 | Hệ thống | Hệ thống | Có | Hệ thống |
-| 13 | Ngữ cảnh | Ngữ cảnh | Có | Ngữ cảnh |
-| 14 | Giới hạn hệ thống | Giới hạn hệ thống | Có | Giới hạn hệ thống |
-| 15 | Hệ thống | Hệ thống | Có | Hệ thống |
-| 16 | Ngữ cảnh | Ngữ cảnh | Có | Ngữ cảnh |
-| 17 | Ngầm | Do người dùng | Không | Ngầm |
-| 18 | Hệ thống | Ngữ cảnh | Không | Ngữ cảnh |
-| 19 | Giới hạn hệ thống | Hệ thống | Không | Giới hạn hệ thống |
-| 20 | Hệ thống | Giới hạn hệ thống | Không | Hệ thống |
+| Ca | Nhãn người 1 | Lý do chọn nhãn (người 1) | Nhãn người 2 | Trùng? | Nhãn thống nhất |
+| --: | --- | --- | --- | --- | --- |
+| 1 | Do người dùng | Khách nhập thiếu số tài khoản; trợ lý làm đúng theo đầu vào sai | Do người dùng | Có | Do người dùng |
+| 2 | Hệ thống | Gọi tool sai tham số (hàng thường thay hàng nặng), sai chính sách và khách đã thấy | Hệ thống | Có | Hệ thống |
+| 3 | Ngữ cảnh | Hoàn về ví đúng thiết kế, chỉ khác kỳ vọng của khách nên không phải Hệ thống | Ngữ cảnh | Có | Ngữ cảnh |
+| 4 | Giới hạn hệ thống | Không có dữ liệu chặng hãng nước ngoài, cố mấy cũng không tra được | Giới hạn hệ thống | Có | Giới hạn hệ thống |
+| 5 | Ngầm | Hoàn thừa nhưng không khách nào báo, không cảnh báo nào kích; chỉ lộ khi kiểm tra mẫu | Ngầm | Có | Ngầm |
+| 6 | Do người dùng | Khách chọn sai mục; trợ lý xử lý đúng luồng khách đã chọn | Do người dùng | Có | Do người dùng |
+| 7 | Hệ thống | Sổ cái lỗi mà vẫn báo "đã hoàn", trợ lý làm sai thiết kế | Hệ thống | Có | Hệ thống |
+| 8 | Hệ thống | Trích điều khoản không tồn tại; sai nhìn thấy được nên không phải Ngầm | Hệ thống | Có | Hệ thống |
+| 9 | Do người dùng | Khách nhập mã sàn thay mã vận đơn; thiếu gợi ý là chỗ cần sửa, không phải gốc lỗi | Do người dùng | Có | Do người dùng |
+| 10 | Ngữ cảnh | Từ chối đúng chính sách, khách thấy sai vì ứng dụng hiện "cam kết 24 giờ" | Ngữ cảnh | Có | Ngữ cảnh |
+| 11 | Giới hạn hệ thống | Trợ lý không xử lý được âm thanh, đầu vào ngoài định dạng hỗ trợ | Giới hạn hệ thống | Có | Giới hạn hệ thống |
+| 12 | Hệ thống | Lỗi nằm ở tool tra đơn của hệ thống (trả thiếu trường), không do khách hay hoàn cảnh | Hệ thống | Có | Hệ thống |
+| 13 | Ngữ cảnh | Trợ lý trả lời theo kịch bản phí vận chuyển, không khớp câu hỏi bảo hiểm của khách | Ngữ cảnh | Có | Ngữ cảnh |
+| 14 | Giới hạn hệ thống | Yêu cầu bị đóng sau thao tác nhầm, trợ lý không có cách hoàn tác | Giới hạn hệ thống | Có | Giới hạn hệ thống |
+| 15 | Hệ thống | Tính 100% thay vì 50%, sai chính sách; nhân viên bắt được nên không phải Ngầm | Hệ thống | Có | Hệ thống |
+| 16 | Ngữ cảnh | Gửi ngay đúng thiết kế, nhưng 2:14 sáng không hợp hoàn cảnh khách | Ngữ cảnh | Có | Ngữ cảnh |
+| 17 | Ngầm | Dùng bảng giá cũ, 212 đơn lệch mà không ai mở lại; không phải lỗi của khách | Do người dùng | Không | Ngầm |
+| 18 | Hệ thống | Tin nhắn thiếu cách tính là lỗi mẫu tin của trợ lý, khách thấy và mở lại | Ngữ cảnh | Không | Ngữ cảnh |
+| 19 | Giới hạn hệ thống | Chỉ truy cập được dữ liệu 12 tháng, đơn 14 tháng ngoài dữ liệu; trợ lý đã chuyển đúng | Hệ thống | Không | Giới hạn hệ thống |
+| 20 | Hệ thống | Thiếu khoá chống trùng nên hoàn hai lần, sai thiết kế chứ không phải không làm được | Giới hạn hệ thống | Không | Hệ thống |
 
 **Tỉ lệ đồng thuận:** 16 / 20 = 80%
 
