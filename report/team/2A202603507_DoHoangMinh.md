@@ -2,7 +2,7 @@
 
 ## 1. Thông tin thành viên
 
-- Họ tên: Đo Hoàng Minh
+- Họ tên: Đỗ Hoàng Minh
 - MSSV: 2A202603507
 - Email: hoangminh.word@gmail.com
 - Vai trò trong nhóm: TV2 — người kiểm số và người gắn nhãn 2; phụ trách Nhiệm vụ D, chỉ số/event của E và đoạn code CP4 trong `src/lab13.py`
