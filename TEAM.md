@@ -11,7 +11,7 @@
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 | Việt (...) | ... | ... | HViettt | Người viết code (A, B) |
+|   1 | Nguyễn Hoàng Việt | 2A202603487 | hoangviet1824qsqn@gmail.com | HViettt | Người viết code (A, B) |
 |   2 | Đỗ Hoàng Minh | 2A202603507 | hoangminh.word@gmail.com | MazzDh | Người kiểm số, người gắn nhãn 2 (D, chỉ số và rủi ro E) |
 |   3 | Đoàn Gia Long | 2A202603443 | doanlong932004@gmail.com | ... | Người gắn nhãn 1, kiêm giữ hồ sơ (C, hồ sơ launch v0, tổng hợp) |
 
@@ -50,7 +50,7 @@ Sao chép mục dưới đây cho từng thành viên.
 
 -
 
-## Viet-MSSV
+## NguyenHoangViet-2A202603487
 
 ### Phần việc phụ trách
 
@@ -63,7 +63,7 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Bằng chứng
 
-- Commit `e4a9267`; `src/lab13.py`, `report/team/bang_chi_phi.md`.
+- Commit `e4a9267`; `src/lab13.py`, `report/team/bang_chi_phi.md`, `report/team/2A202603487_NguyenHoangViet.md`.
 
 ## DoHoangMinh-2A202603507
 
