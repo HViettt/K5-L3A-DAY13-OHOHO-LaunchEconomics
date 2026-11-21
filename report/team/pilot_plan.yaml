@@ -21,31 +21,31 @@
 # Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn:
 
 pilot:
-  owner: "?"                      # một người có tên vai trò, không ghi "cả đội"
-  scope: "?"                      # loại yêu cầu nào, depot nào; dựa vào kết quả A3
+  owner: "TV2"                      # mot nguoi co ten vai tro, khong ghi "cac doi"
+  scope: "noi_dia + hang_nang"      # loai yeu cau nao, depot nao; bao ket ket qua A3
   assignment:
-    unit: "?"                     # request | staff | depot
+    unit: "depot"                   # request | staff | depot
     control_share: 0.5
     randomized: true
-  rollout: [0.10, 0.25, 0.50]     # mỗi bước một tuần
+  rollout: [0.10, 0.25, 0.50]       # moi buoc mot tuan
   primary_metric:
     name: dong_trong_24h_khong_mo_lai_7_ngay
     baseline: 0.70
     mde: 0.05
     alpha: 0.05
     power: 0.80
-    n_per_arm: "?"
-    design_effect: "?"            # 1 nếu chia theo yêu cầu
-    clusters_per_arm: "?"         # để trống nếu chia theo yêu cầu
+    n_per_arm: 20                   # so nhan vien moi nhom
+    design_effect: 1.24             # 1 neu chia theo yeu cầu; ICC=0.02, m≈13
+    clusters_per_arm: 4             # de trong neu chia theo yeu cau
   identifiability:
-    concurrent_control: "?"
-    spillover_risk: "?"
-    predeclared: "?"
+    concurrent_control: true
+    spillover_risk: false
+    predeclared: true
   stop_rules:
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
+    - "NẾU tỷ lệ đóng 24h > 75% TRONG biên độ dự báo THÌ KHÔNG THÌ dừng pilot sớm"
+    - "NẾU chi phí/yc > 15.000đ TRONG thời gian chạy THÌ KHÔNG THÌ pilot vì quá chi phí"
+    - "NẾU tỉ lệ lỗi lọt khách > 5% TRONG ngày thứ 3 THÌ KHÔNG THÌ pilot vì an toàn"
   interim_looks: "chỉ kiểm tra chỉ số an toàn"
-  rollback: "?"                   # ai bấm, mất bao lâu, khách được phục vụ bằng gì
-  decision_date: "?"
-  simulated_inputs: ["?"]         # liệt kê mọi con số giả lập đã dùng
+  rollback: "TV2 bấm dừng, dừng 1 sesión, khách phục vụ thủ công theo quy trình cũ"
+  decision_date: "2024-12-20"
+  simulated_inputs: ["0.70", "0.05", "0.02", "1.20", "1.25", "1.25", "15000", "75", "5"]
