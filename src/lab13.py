@@ -4,7 +4,14 @@ Không cần khoá API. Điền các chỗ ghi VIẾT Ở ĐÂY (đánh dấu TO
 Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
+import sys
+from statistics import NormalDist
+
 import pandas as pd
+
+# Windows Terminal cũ có thể dùng cp1252; ép UTF-8 để lệnh chạy không dừng ở dấu tiếng Việt.
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
 GIA_VAO = 26        # đồng cho 1.000 token đầu vào
@@ -191,6 +198,63 @@ if __name__ == '__main__':
     print(f'Voi 9 phut/ca lam lai:      tong={tong_b4_9p:,.0f} đ | CPS [sim]={cps_b4_9p:,.0f} đ ({cps_b4_9p / BASELINE:.2f}x) | hoa von <= {hoa_von_9p:.1f} phut/lan xem')
     print(f'Voi {tb_phut_lam_lai_all:.1f} phut/ca (TB data): tong={tong_b4_thuc:,.0f} đ | CPS [sim]={cps_b4_thuc:,.0f} đ ({cps_b4_thuc / BASELINE:.2f}x) | hoa von <= {hoa_von_thuc:.1f} phut/lan xem')
 
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    # ---------- D1 · Cỡ mẫu cho kế hoạch pilot ----------
+    def co_mau(p1, p2, alpha=0.05, power=0.8):
+        """Cỡ mẫu mỗi nhóm khi so sánh hai tỉ lệ theo công thức NormalDist."""
+        za = NormalDist().inv_cdf(1 - alpha / 2)
+        zb = NormalDist().inv_cdf(power)
+        pb = (p1 + p2) / 2
+        return math.ceil(
+            (
+                za * math.sqrt(2 * pb * (1 - pb))
+                + zb * math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))
+            ) ** 2 / (p2 - p1) ** 2
+        )
+
+    print('\n=== D1 · Cỡ mẫu ===')
+    alpha, power, icc = 0.05, 0.80, 0.02
+    n_5pp = co_mau(0.70, 0.75, alpha=alpha, power=power)
+    de_m75 = 1 + (75 - 1) * icc
+    n_5pp_m75 = math.ceil(n_5pp * de_m75)
+    n_max_20_staff = 20 / icc
+    n_max_6_depot = 6 / icc
+    n_6pp = co_mau(0.70, 0.76, alpha=alpha, power=power)
+    m_6pp_20_staff = math.ceil(n_6pp * (1 - icc) / (20 - n_6pp * icc))
+    de_m6pp = 1 + (m_6pp_20_staff - 1) * icc
+    n_effective_6pp = 20 * m_6pp_20_staff / de_m6pp
+
+    print(f'a) Chia theo yeu cau: {n_5pp:,} yeu cau moi nhom')
+    print(
+        f'b) Theo nhan vien, m=75: DE={de_m75:.2f}; n={n_5pp * de_m75:,.2f} '
+        f'-> {n_5pp_m75:,} yeu cau moi nhom; can '
+        f'{math.ceil(n_5pp_m75 / 75)} nhan vien moi nhom (>40, khong du)'
+    )
+    print(f'c) 20 nhan vien moi nhom: toi da {n_max_20_staff:,.0f} < {n_5pp:,} yeu cau')
+    print(f'd) 6 depot moi nhom: toi da {n_max_6_depot:,.0f} yeu cau')
+    print(
+        f'e) Chenh 6 diem: n={n_6pp:,} yeu cau moi nhom; can m>={m_6pp_20_staff} '
+        f'yeu cau/nguoi voi 20 nhan vien (DE={de_m6pp:.2f}; '
+        f'n_effective={n_effective_6pp:,.1f})'
+    )
+
+    # Power thực tế nếu kế hoạch được thiết kế cho 6 điểm nhưng tác động chỉ 5 điểm.
+    from statsmodels.stats.proportion import proportion_effectsize
+    from statsmodels.stats.power import NormalIndPower
+
+    effect_size_5pp = abs(proportion_effectsize(0.70, 0.75))
+    power_5pp = NormalIndPower().power(
+        effect_size=effect_size_5pp,
+        nobs1=n_6pp,
+        alpha=alpha,
+        ratio=1,
+        alternative='two-sided',
+    )
+    print(f'Power thuc te o che do 6 diem neu tac dong chi 5 diem: {power_5pp:.2f}')
+
+    # ---------- D3 · Tỉ lệ mở lại hiện tại trước khi đặt luật dừng ----------
+    mo_lai_hien_tai = reqs['mo_lai_trong_7_ngay'].mean()
+    mo_lai_pham_vi = pham_vi['mo_lai_trong_7_ngay'].mean()
+    print(
+        f'Ty le mo lai hien tai: {mo_lai_hien_tai:.2%} toan bo; '
+        f'{mo_lai_pham_vi:.2%} trong pham vi noi_dia + hang_nang'
+    )

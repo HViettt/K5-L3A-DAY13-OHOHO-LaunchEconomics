@@ -1,51 +1,50 @@
 # Lab 13 · Nhiệm vụ D · Kế hoạch pilot trợ lý hoàn phí LogiX-VN (Gate 2a)
-# Điền mọi chỗ có dấu hỏi. Khi nộp, ngoài các dòng chú thích không còn dấu hỏi nào.
-# Kiểm tra đọc được: python -c "import yaml; yaml.safe_load(open('../report/team/pilot_plan.yaml'))"
+# Kiểm tra đọc được: python -c "import yaml; yaml.safe_load(open('../report/team/pilot_plan.yaml', encoding='utf-8'))"
 #
 # D1 · Cỡ mẫu (baseline 0,70; mục tiêu +5 điểm; alpha 0,05; power 0,8; ICC 0,02)
-#   a) Chia theo yêu cầu:
-#   b) Theo nhân viên, m = 75:
-#   c) 20 nhân viên mỗi nhóm:
-#   d) 6 depot mỗi nhóm:
-#   e) Mức chênh 6 điểm (859 mỗi nhóm), 20 nhân viên mỗi nhóm:
+#   a) Chia theo yêu cầu: 1.251 yêu cầu mỗi nhóm.
+#   b) Theo nhân viên, m = 75: DE = 1 + 74 × 0,02 = 2,48; 1.251 × 2,48 = 3.103 yêu cầu mỗi nhóm, cần 42 nhân viên mỗi nhóm, tổng 84 > 40 nên không đủ.
+#   c) 20 nhân viên mỗi nhóm: tối đa 20 / 0,02 = 1.000 yêu cầu < 1.251, không đủ cho mức chênh 5 điểm.
+#   d) 6 depot mỗi nhóm: tối đa 6 / 0,02 = 300 yêu cầu, không đủ cho mức chênh 5 điểm.
+#   e) Mức chênh 6 điểm: cần 859 yêu cầu mỗi nhóm; với 20 nhân viên mỗi nhóm, m ≥ 299 yêu cầu/người, DE = 6,96 và cỡ mẫu hiệu dụng ≈ 859.
 #
-# D2 · Năm câu kiểm tra "tách được tác động" với cách chia đã chọn (mỗi câu một dòng):
-#   1. Đối chứng chạy cùng thời gian:
-#   2. Chia ngẫu nhiên hay do người chọn:
-#   3. Ảnh hưởng gián tiếp và cách giảm:
-#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước:
-#   5. Ít nhất 20 cụm mỗi nhóm:
+# D2 · Năm câu kiểm tra "tách được tác động" với cách chia theo nhân viên, 20 + 20 cụm:
+#   1. Đối chứng chạy cùng thời gian: Có, 20 nhân viên đối chứng làm cùng tuần và cùng depot.
+#   2. Chia ngẫu nhiên hay do người chọn: Ngẫu nhiên bằng code với seed ghi trước, phân tầng theo depot.
+#   3. Ảnh hưởng gián tiếp và cách giảm: Có rủi ro chia sẻ câu trả lời trong depot; quyền truy cập theo tài khoản và log lượt mở trợ lý theo staff_id.
+#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước: Có, chốt trước ngày bắt đầu; ngày quyết định 2027-01-05.
+#   5. Ít nhất 20 cụm mỗi nhóm: Có, đúng 20 nhân viên mỗi nhóm.
 #
-# Đánh đổi đã chấp nhận (nếu cách chia chưa đạt cả hai điều kiện):
-#
-# Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn:
+# Đánh đổi đã chấp nhận: 20 + 20 nhân viên không đủ cho MDE 5 điểm, nên kế hoạch dùng MDE 6 điểm. Nếu tác động thật chỉ 5 điểm, power ở n = 859 giảm còn 0,64 và cần Giám đốc vận hành ký nhận đánh đổi này.
+# Tỉ lệ mo_lai_trong_7_ngay hiện tại: 4,25% (51/1.200) toàn bộ và 3,97% trong phạm vi pilot; luật dừng dùng chênh +2 điểm so với đối chứng kèm trần tuyệt đối 6%.
 
 pilot:
-  owner: "TV2"                      # mot nguoi co ten vai tro, khong ghi "cac doi"
-  scope: "noi_dia + hang_nang"      # loai yeu cau nao, depot nao; bao ket ket qua A3
+  owner: "Giám đốc vận hành LogiX-VN"
+  scope: "Chỉ noi_dia (2.696 đ, 0,22×; simulated) và hang_nang (8.221 đ, 0,69×; simulated); loại quoc_te (22.515 đ, 1,88×; simulated) và doi_tac (10.215 đ, 0,85×; simulated)"
   assignment:
-    unit: "depot"                   # request | staff | depot
+    unit: "staff"
     control_share: 0.5
     randomized: true
-  rollout: [0.10, 0.25, 0.50]       # moi buoc mot tuan
+  rollout: [0.10, 0.25, 0.50]
   primary_metric:
     name: dong_trong_24h_khong_mo_lai_7_ngay
     baseline: 0.70
-    mde: 0.05
+    mde: 0.06
     alpha: 0.05
     power: 0.80
-    n_per_arm: 20                   # so nhan vien moi nhom
-    design_effect: 1.24             # 1 neu chia theo yeu cầu; ICC=0.02, m≈13
-    clusters_per_arm: 4             # de trong neu chia theo yeu cau
+    n_per_arm: 859
+    design_effect: 6.96
+    clusters_per_arm: 20
+    requests_per_cluster: 299
   identifiability:
-    concurrent_control: true
-    spillover_risk: false
-    predeclared: true
+    concurrent_control: "Có, 20 nhân viên đối chứng chạy cùng tuần và cùng depot"
+    spillover_risk: "Có rủi ro chia sẻ câu trả lời trong depot; giảm bằng quyền truy cập theo tài khoản và log lượt mở trợ lý theo staff_id"
+    predeclared: "Có, chỉ số chính, ngưỡng, luật dừng và ngày quyết định 2027-01-05 chốt trước ngày bắt đầu"
   stop_rules:
-    - "NẾU tỷ lệ đóng 24h > 75% TRONG biên độ dự báo THÌ KHÔNG THÌ dừng pilot sớm"
-    - "NẾU chi phí/yc > 15.000đ TRONG thời gian chạy THÌ KHÔNG THÌ pilot vì quá chi phí"
-    - "NẾU tỉ lệ lỗi lọt khách > 5% TRONG ngày thứ 3 THÌ KHÔNG THÌ pilot vì an toàn"
-  interim_looks: "chỉ kiểm tra chỉ số an toàn"
-  rollback: "TV2 bấm dừng, dừng 1 sesión, khách phục vụ thủ công theo quy trình cũ"
-  decision_date: "2024-12-20"
-  simulated_inputs: ["0.70", "0.05", "0.02", "1.20", "1.25", "1.25", "15000", "75", "5"]
+    - "NẾU tỉ lệ mở lại 7 ngày của nhóm trợ lý cao hơn nhóm đối chứng từ 2 điểm phần trăm hoặc vượt 6%, hoặc có từ 1 ca hoàn trùng TRONG 3 ngày liên tiếp THÌ Giám đốc vận hành tắt trợ lý trong 30 phút và chuyển khách sang luồng nhân viên tự làm KHÔNG THÌ không được sang bước rollout tiếp"
+    - "NẾU chi phí mỗi việc thành công vượt 8.000 đ TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp về noi_dia và giới hạn tối đa 2 lần chạy KHÔNG THÌ không được mở phạm vi hang_nang"
+    - "NẾU tỉ lệ bỏ qua gợi ý vượt 40% TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên trong 3 ngày và ghi kế hoạch giảm xem lại theo bậc KHÔNG THÌ không được chuyển bước rollout"
+  interim_looks: "Chỉ kiểm tra chỉ số an toàn; không xem kết quả chỉ số chính theo từng bước trước ngày quyết định"
+  rollback: "Giám đốc vận hành bấm cờ tắt, hiệu lực trong 30 phút; khách được phục vụ bằng luồng nhân viên tự làm"
+  decision_date: "2027-01-05"
+  simulated_inputs: ["0.70", "0.06", "0.02", "1251", "859", "299", "6.96", "0.64", "4.25%", "3.97%"]
