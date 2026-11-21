@@ -21,13 +21,15 @@
 - Dựng khung hồ sơ launch v0 với người phụ trách cho cả 7 mục.
 - So với bộ nhãn 2 (Minh): trùng 16/20 = 80%; viết quy tắc phân biệt và thống nhất 4 ca lệch (17, 18, 19, 20).
 - Điền hồ sơ launch v0 mục 1, 2, 3 từ số A/B của Việt (4.472 đ, 16,3×, 0,49×, xếp hạng độ nhạy, `simulated`) và mục 5.
-- Đề xuất cuối của nhóm: ...
+- Điền mục 4, 6, 7 của hồ sơ từ `chi_so.md` và `pilot_plan.yaml` của Minh, đối chiếu D1 với output `python lab13.py`; viết đề xuất **Go có điều kiện** với 4 điều kiện, mỗi điều kiện có người phụ trách và ngày kiểm tra.
+- Viết `group_report.md` mục 3, 4, 5, 7, 8; điền `TEAM.md`.
 
 ## 4. Bằng chứng
 
 - `report/team/bang_loi.md`: cột "Nhãn người 1", tỉ lệ đồng thuận, quy tắc 4 ca lệch, bảng khắc phục 5 ca.
-- `report/team/ho_so_launch_v0.md`: khung 7 mục, mục 1, 2, 3, 5.
-- Commit: ...
+- `report/team/ho_so_launch_v0.md`: đủ 7 mục và đề xuất cuối.
+- `report/team/group_report.md`, `TEAM.md`.
+- Commit: `4c451cc`, `d4fc1df` và commit hoàn thiện hồ sơ.
 
 ## 5. Công cụ AI đã dùng
 

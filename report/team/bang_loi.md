@@ -4,7 +4,7 @@
 
 ## Hai bộ nhãn độc lập
 
-Người gắn nhãn 1: Đoàn Gia Long · Người gắn nhãn 2: Minh (gắn trong 8 phút, không trao đổi)
+Người gắn nhãn 1: Đoàn Gia Long · Người gắn nhãn 2: Đỗ Hoàng Minh (gắn trong 8 phút, không trao đổi)
 
 | Ca | Nhãn người 1 | Lý do chọn nhãn (người 1) | Nhãn người 2 | Trùng? | Nhãn thống nhất |
 | --: | --- | --- | --- | --- | --- |

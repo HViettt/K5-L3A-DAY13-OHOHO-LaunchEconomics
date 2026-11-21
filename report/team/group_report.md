@@ -16,17 +16,29 @@ Dựng hồ sơ launch v0 cho trợ lý hoàn phí LogiX-VN để hội đồng 
 
 Tóm tắt cách nhóm làm từng nhiệm vụ A–E và link tới file hồ sơ tương ứng.
 
-...
+- **A · Mô hình chi phí** ([bang_chi_phi.md](bang_chi_phi.md)): tử số tính mọi lần chạy kể cả lần lỗi, mẫu số chỉ đếm `ket_qua == 'thanh_cong'`; cộng giờ xem lại và làm lại (`simulated`); tách theo loại và cộng chi phí cố định cho phạm vi noi_dia + hang_nang.
+- **B · Độ nhạy** ([bang_chi_phi.md](bang_chi_phi.md)): đổi từng yếu tố trong 9 kịch bản, một cặp, giới hạn 1–3 lần chạy và kịch bản xem lại 100%.
+- **C · Bảng lỗi** ([bang_loi.md](bang_loi.md)): hai người gắn nhãn độc lập 20 ca theo năm loại PAIR, so nhãn, thống nhất ca lệch, chọn 5 ca để gán cách phát hiện đo được và vai trò phụ trách.
+- **D · Pilot** ([pilot_plan.yaml](pilot_plan.yaml)): tính 5 câu cỡ mẫu trước, rồi chọn chia ngẫu nhiên theo nhân viên 20 + 20; tính tỉ lệ mở lại hiện tại trước khi đặt luật an toàn.
+- **E · Chỉ số, rủi ro, hồ sơ** ([chi_so.md](chi_so.md), [ho_so_launch_v0.md](ho_so_launch_v0.md)): tính thử ba chỉ số, liệt kê event có `trace_id`, lấy rủi ro từ bảng độ nhạy, ghép thành hồ sơ một trang.
 
 ## 4. Kết quả
 
 Con số chính (ghi nhãn `simulated` khi cần) và đề xuất cuối của `ho_so_launch_v0.md`. Kết quả duyệt chéo nhóm nhận được từ hội đồng.
 
-...
+- Chi phí mỗi việc thành công **4.472 đ** (`simulated`), gấp **16,3 lần** hoá đơn token + tool chia số yêu cầu; chi phí cả hệ thống **5.865 đ/yêu cầu = 0,49×** mức nhân viên tự làm 12.000 đ (`simulated`).
+- Ba yếu tố nhạy nhất: làm lại (+51,8%), xem lại (+40,7%), lương (+23,1%) (`simulated`); `quoc_te` 1,88× nên loại khỏi pilot.
+- Bảng lỗi: đồng thuận **16/20 = 80%**.
+- Chỉ số trong đợt chạy thử: chính **82,83%**, bỏ qua gợi ý **27,12%**, mở lại 7 ngày **4,25%**.
+- Pilot: 20 + 20 nhân viên, MDE 6 điểm, 859 yêu cầu/nhóm; con số bất lợi là power **0,64** nếu tác động thật chỉ 5 điểm.
+- **Đề xuất: Go có điều kiện** cho pilot noi_dia + hang_nang, 4 điều kiện có người phụ trách và ngày kiểm tra.
+- Kết quả duyệt chéo nhóm nhận được từ hội đồng: ...
 
 ## 5. Khó khăn và cách xử lý
 
-...
+- Nhóm chỉ có 3 người cho 4 vai: chia việc theo file (mỗi file một người sở hữu) và chỉ đồng bộ ở 3 điểm bàn giao để tránh xung đột Git.
+- Xung đột Git ở `bang_loi.md` khi hai người cùng sửa: giữ cột nhãn của từng người, gộp lại bằng tay.
+- Bản nháp đầu của `pilot_plan.yaml` và `chi_so.md` còn thiếu D1, D2, số chỉ số và luật dừng chưa đủ vế: người giữ hồ sơ rà soát, TV2 sửa lại trước khi điền hồ sơ.
 
 ## 6. Tổng hợp đóng góp
 
@@ -34,8 +46,13 @@ Chi tiết đóng góp của từng thành viên nằm trong `TEAM.md`.
 
 ## 7. Hạn chế và hướng cải thiện
 
-...
+- Số phút xem lại và làm lại là `simulated`: chi phí mỗi việc thành công phải tính lại bằng phút đo thật sau tuần 1 pilot.
+- 40 nhân viên không đủ cho MDE 5 điểm; pilot chỉ thấy được mức chênh 6 điểm (power 0,64 ở mức 5 điểm).
+- Đồng thuận nhãn 80% chỉ vừa đạt ngưỡng; nên viết thêm ví dụ cho các cặp loại dễ lẫn (Hệ thống / Giới hạn, Hệ thống / Ngữ cảnh).
 
 ## 8. Tài liệu tham khảo
 
-...
+- Erol và cộng sự, *Cost-of-Pass: An Economic Framework for Evaluating Language Models*, arxiv.org/abs/2504.13359
+- Google PAIR, *People + AI Guidebook*, chương "Errors + Graceful Failure"
+- Tài liệu statsmodels, `NormalIndPower`
+- `docs/du_lieu_va_cong_thuc.md`, `docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md`
